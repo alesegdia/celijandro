@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boda de Celijandro</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: #faf5ef;
+      color: #231f20;
+      text-align: center;
+    }
+    header {
+      padding: 1.2rem 1rem;
+      background-color: #911e66;
+      color: #f6f1e8;
+    }
+    .main-nav {
+      width: 100%;
+      background: transparent;
+    }
+    .main-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+    }
+    .main-nav li {
+      display: inline-block;
+    }
+    .main-nav a {
+      color: #f6f1e8;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      transition: background 0.2s, color 0.2s;
+      display: block;
+    }
+    .main-nav a:hover {
+      background: #faf5ef;
+      color: #911e66;
+      text-decoration: underline;
+    }
+    .countdown {
+      font-size: 2rem;
+      color: #911e66;
+      margin: 2rem 0;
+    }
+    footer {
+      padding: 2rem 1rem;
+      background-color: #911e66;
+      color: #f6f1e8;
+      margin-top: 3rem;
+    }
+    .ilustracion-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .ilustracion {
+      max-width: 420px;
+      width: 90%;
+      border-radius: 2rem;
+      background: #fff;
+    }
+    @media (max-width: 768px) {
+      .ilustracion {
+        width: 90%;
+        max-width: none;
+      }
+    }
+    .section {
+      padding: 3rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .section h2 {
+      color: #911e66;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .section p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .highlight {
+      background: #911e66;
+      color: #f6f1e8;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#laboda">La boda</a></li>
+        <li><a href="#comollegar">Como llegar</a></li>
+        <li><a href="#dresscode">Dress Code</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="ilustracion-container">
+    <img src="ilustracion.jpg" alt="Ilustración de nosotros dos" class="ilustracion" />
+  </div>
+
+  <div class="countdown" id="countdown">
+    <!-- Cuenta regresiva aparecerá aquí -->
+  </div>
+
+  <section id="nosotros" class="section">
+    <h2>Nosotros</h2>
+    <p>Somos Celia y Alejandro, y después de <span class="highlight">5 años juntos</span> hemos decidido dar el gran paso. Nos conocimos en la universidad y desde entonces hemos compartido aventuras, risas y sueños.</p>
+    <p>Queremos compartir este momento tan especial con las personas que más queremos. ¡Esperamos verte en nuestra celebración!</p>
+  </section>
+
+  <section id="laboda" class="section">
+    <h2>La Boda</h2>
+    <p><strong>Fecha:</strong> <span class="highlight">Sábado 20 de Junio de 2026</span></p>
+    <p><strong>Ceremonia:</strong> 17:00h en la Iglesia de San Salvador</p>
+    <p><strong>Celebración:</strong> 20:00h en el Salón de Bodas "Los Naranjos"</p>
+    <p>La ceremonia será íntima y emotiva, seguida de una celebración llena de música, baile y buena comida. ¡Prepárate para una noche inolvidable!</p>
+  </section>
+
+  <section id="comollegar" class="section">
+    <h2>Cómo Llegar</h2>
+    <p><strong>Iglesia de San Salvador</strong><br>
+    Calle Mayor, 15<br>
+    41001 Sevilla</p>
+    <p><strong>Salón "Los Naranjos"</strong><br>
+    Avenida de la Palmera, 89<br>
+    41013 Sevilla</p>
+    <p>Habrá <span class="highlight">autobús gratuito</span> desde la iglesia hasta el salón a las 19:30h. También disponemos de parking gratuito en ambas ubicaciones.</p>
+  </section>
+
+  <section id="dresscode" class="section">
+    <h2>Dress Code</h2>
+    <p>El código de vestimenta es <span class="highlight">elegante informal</span>. Queremos que te sientas cómodo/a pero con un toque especial para la ocasión.</p>
+    <p><strong>Sugerencias:</strong><br>
+    • Vestidos midi o largos<br>
+    • Trajes con o sin corbata<br>
+    • Colores que evitar: blanco y tonos muy similares al rosa</p>
+  </section>
+
+  <section id="contacto" class="section">
+    <h2>Contacto</h2>
+    <p>Para cualquier duda o confirmación de asistencia:</p>
+    <p><strong>Celia:</strong> +34 666 123 456<br>
+    <strong>Alejandro:</strong> +34 666 654 321</p>
+    <p><strong>Email:</strong> celijandro2026@gmail.com</p>
+    <p>Por favor, confirma tu asistencia antes del <span class="highlight">1 de Mayo de 2026</span></p>
+  </section>
+
+  <footer>
+    <p>Con mucho cariño, Celijandro</p>
+  </footer>
+
+  <script>
+    const targetDate = new Date('2026-06-20T17:00:00').getTime();
+    const countdownEl = document.getElementById('countdown');
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      if (diff < 0) {
+        countdownEl.innerHTML = "¡Ya es el día!";
+        return;
+      }
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+      countdownEl.innerHTML = `Faltan ${d} días ${h} h ${m} min ${s} s`;
+    }, 1000);
+  </script>
+</body>
+</html>

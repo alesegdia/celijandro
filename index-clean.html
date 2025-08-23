@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Boda de Celijandro</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: #faf5ef;
+      color: #231f20;
+      text-align: center;
+    }
+    header {
+      padding: 1.2rem 1rem;
+      background-color: #911e66;
+      color: #f6f1e8;
+    }
+    .main-nav {
+      width: 100%;
+      background: transparent;
+    }
+    .main-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+    }
+    .main-nav li {
+      display: inline-block;
+    }
+    .main-nav a {
+      color: #f6f1e8;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      transition: background 0.2s, color 0.2s;
+      display: block;
+    }
+    .main-nav a:hover {
+      background: #faf5ef;
+      color: #911e66;
+      text-decoration: underline;
+    }
+    .countdown {
+      font-size: 2rem;
+      color: #911e66;
+      margin: 2rem 0;
+    }
+    footer {
+      padding: 2rem 1rem;
+      background-color: #911e66;
+      color: #f6f1e8;
+      margin-top: 3rem;
+    }
+    .ilustracion-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .ilustracion {
+      max-width: 350px;
+      width: 100%;
+      border-radius: 2rem;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#laboda">La boda</a></li>
+        <li><a href="#comollegar">Como llegar</a></li>
+        <li><a href="#dresscode">Dress Code</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="ilustracion-container">
+    <img src="ilustracion.jpg" alt="Ilustración de nosotros dos" class="ilustracion" />
+  </div>
+
+  <div class="countdown" id="countdown">
+    <!-- Cuenta regresiva aparecerá aquí -->
+  </div>
+
+  <footer>
+    <p>Con mucho cariño, Celijandro</p>
+  </footer>
+
+  <script>
+    const targetDate = new Date('2026-06-20T17:00:00').getTime();
+    const countdownEl = document.getElementById('countdown');
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      if (diff < 0) {
+        countdownEl.innerHTML = "¡Ya es el día!";
+        return;
+      }
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+      countdownEl.innerHTML = `Faltan ${d} días ${h} h ${m} min ${s} s`;
+    }, 1000);
+  </script>
+</body>
+</html>
