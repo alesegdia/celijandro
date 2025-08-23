@@ -4,10 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Boda de Celijandro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       margin: 0;
-      font-family: 'Georgia', serif;
+      font-family: 'Nunito', sans-serif;
       background-color: #faf5ef;
       color: #231f20;
       text-align: center;
@@ -48,10 +52,138 @@
       color: #911e66;
       text-decoration: underline;
     }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #f6f1e8;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .main-nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #911e66;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      }
+      .main-nav ul.show {
+        max-height: 400px;
+        display: flex;
+        padding-bottom: 1.5rem;
+        opacity: 1;
+      }
+      .main-nav li {
+        width: 100%;
+        position: relative;
+      }
+      .main-nav li:after {
+        content: '';
+        position: absolute;
+        bottom: 0.2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40%;
+        height: 2px;
+        background-color: #faf5ef;
+      }
+      .main-nav a {
+        padding: 0.7rem;
+        border-radius: 0;
+        border-bottom: none;
+      }
+      .main-nav li:last-child a {
+        border-bottom: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      header {
+        position: relative;
+        padding: 0.5rem 1rem;
+      }
+      .ilustracion {
+        width: 90%;
+        max-width: none;
+      }
+    }
     .countdown {
-      font-size: 2rem;
+      font-size: 1.4rem;
       color: #911e66;
-      margin: 2rem 0;
+      margin: 0;
+      padding: 2rem 0;
+    }
+    .countdown-word {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .countdown-numbers {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    .countdown-labels {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 300;
+      opacity: 0.8;
+    }
+    .countdown-item {
+      text-align: center;
+      min-width: 3rem;
+      position: relative;
+    }
+    .countdown-item:not(:last-child):after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -0.75rem;
+      transform: translateY(-50%);
+      width: 2px;
+      height: 3rem;
+      background-color: #911e66;
+      opacity: 0.4;
+    }
+    @media (max-width: 768px) {
+      .countdown {
+        padding: 1.5rem 0.5rem;
+      }
+      .countdown-word {
+        font-size: 2rem;
+        margin-bottom: 1.2rem;
+      }
+      .countdown-numbers {
+        gap: 0.5rem;
+        font-size: 2.2rem;
+        margin-bottom: 0.7rem;
+      }
+      .countdown-labels {
+        gap: 0.5rem;
+        font-size: 1rem;
+      }
+      .countdown-item {
+        min-width: auto;
+        flex: 1;
+      }
+      .countdown-item:not(:last-child):after {
+        right: -0.25rem;
+        height: 2.8rem;
+      }
     }
     footer {
       padding: 2rem 1rem;
@@ -64,7 +196,7 @@
       justify-content: center;
       align-items: center;
       margin-top: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 0;
     }
     .ilustracion {
       max-width: 420px;
@@ -94,17 +226,154 @@
       margin-bottom: 1rem;
     }
     .highlight {
+      color: #911e66;
+      font-weight: bold;
+    }
+    .map-button {
+      display: inline-block;
       background: #911e66;
       color: #f6f1e8;
-      padding: 0.2rem 0.5rem;
-      border-radius: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 2rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      transition: background 0.2s;
+    }
+    .map-button:hover {
+      background: #231f20;
+      color: #f6f1e8;
+    }
+    .ideas-link {
+      color: #911e66;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .ideas-link:hover {
+      color: #231f20;
+    }
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+    .carousel-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .carousel-images {
+      position: relative;
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+    }
+    .carousel-image {
+      width: 100%;
+      height: auto;
+      display: none;
+    }
+    .carousel-image.active {
+      display: block;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(145, 30, 102, 0.8);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+    .carousel-btn:hover {
+      background: rgba(35, 31, 32, 0.9);
+    }
+    .prev-btn {
+      left: 15px;
+    }
+    .next-btn {
+      right: 15px;
+    }
+    .carousel-dots {
+      text-align: center;
+      padding: 15px;
+      background: white;
+    }
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      background-color: #ddd;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .dot.active,
+    .dot:hover {
+      background-color: #911e66;
+    }
+    .close-button {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: #911e66;
+      color: white;
+      border: none;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .close-button:hover {
+      background: #231f20;
+    }
+    #comollegar p:nth-of-type(2),
+    #comollegar p:nth-of-type(3),
+    #comollegar p:nth-of-type(4),
+    #comollegar p:nth-of-type(5) {
+      margin: 0;
+    }
+    #comollegar p:nth-of-type(2) {
+      margin-top: 1.5rem;
     }
   </style>
 </head>
 <body>
   <header>
     <nav class="main-nav">
-      <ul>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+      <ul id="nav-menu">
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#laboda">La boda</a></li>
         <li><a href="#comollegar">Como llegar</a></li>
@@ -119,72 +388,180 @@
   </div>
 
   <div class="countdown" id="countdown">
-    <!-- Cuenta regresiva aparecerá aquí -->
+    <div class="countdown-word">Faltan</div>
+    <div class="countdown-numbers">
+      <div class="countdown-item">
+        <span id="days">00</span>
+      </div>
+      <div class="countdown-item">
+        <span id="hours">00</span>
+      </div>
+      <div class="countdown-item">
+        <span id="minutes">00</span>
+      </div>
+      <div class="countdown-item">
+        <span id="seconds">00</span>
+      </div>
+    </div>
+    <div class="countdown-labels">
+      <div class="countdown-item">días</div>
+      <div class="countdown-item">hs</div>
+      <div class="countdown-item">min</div>
+      <div class="countdown-item">seg</div>
+    </div>
   </div>
 
   <section id="nosotros" class="section">
-    <h2>Nosotros</h2>
+    <h2><i class="fas fa-heart"></i> Nosotros</h2>
     <p>Somos Celia y Alejandro, y después de <span class="highlight">5 años juntos</span> hemos decidido dar el gran paso. Nos conocimos en la universidad y desde entonces hemos compartido aventuras, risas y sueños.</p>
     <p>Queremos compartir este momento tan especial con las personas que más queremos. ¡Esperamos verte en nuestra celebración!</p>
   </section>
 
   <section id="laboda" class="section">
-    <h2>La Boda</h2>
-    <p><strong>Fecha:</strong> <span class="highlight">Sábado 20 de Junio de 2026</span></p>
-    <p><strong>Ceremonia:</strong> 17:00h en la Iglesia de San Salvador</p>
-    <p><strong>Celebración:</strong> 20:00h en el Salón de Bodas "Los Naranjos"</p>
-    <p>La ceremonia será íntima y emotiva, seguida de una celebración llena de música, baile y buena comida. ¡Prepárate para una noche inolvidable!</p>
+    <div style="text-align: center; margin: 1.5rem 0;">
+      <img src="logo.png" alt="Logo de la boda" style="max-width: 200px; width: 100%; height: auto;">
+    </div>
+    <h2><i class="fas fa-ring"></i> La Boda</h2>
+    <p><strong><i class="fas fa-calendar"></i></strong> <span class="highlight">Sábado 4 de Octubre de 2025</span></p>
+    <p><strong><i class="fas fa-clock"></i> </strong> 13:00h</p>
   </section>
 
   <section id="comollegar" class="section">
-    <h2>Cómo Llegar</h2>
-    <p><strong>Iglesia de San Salvador</strong><br>
-    Calle Mayor, 15<br>
-    41001 Sevilla</p>
-    <p><strong>Salón "Los Naranjos"</strong><br>
-    Avenida de la Palmera, 89<br>
-    41013 Sevilla</p>
-    <p>Habrá <span class="highlight">autobús gratuito</span> desde la iglesia hasta el salón a las 19:30h. También disponemos de parking gratuito en ambas ubicaciones.</p>
+    <h2><i class="fas fa-map-marker-alt"></i> Cómo Llegar</h2>
+    <p><strong><i class="fas fa-glass-cheers"></i> Chiringuito Larena</strong><br>
+    Carretera El Rompido - El Portil, KM3<br>
+    Playa San Miguel<br>
+    21459, Cartaya, Huelva</p>
+    <a href="https://maps.app.goo.gl/Ao2KWeBLdQPhk5dMA" target="_blank" class="map-button"><i class="fas fa-map-marker-alt"></i> Ver en Google Maps</a>
+
+    <p><i class="fas fa-glass-cheers"></i> Si te preocupa la vuelta</p>
+    <p><i class="fas fa-taxi"></i> Llama a un taxi</p>
+    <p><i class="fas fa-phone"></i> Al <span class="highlight">959 10 19 11</span></p>
+    <p><i class="fas fa-euro-sign"></i> El precio hasta <span class="highlight">Apartamentos Leo</span> es <span class="highlight">15€</span></p>
+
   </section>
 
   <section id="dresscode" class="section">
-    <h2>Dress Code</h2>
-    <p>El código de vestimenta es <span class="highlight">elegante informal</span>. Queremos que te sientas cómodo/a pero con un toque especial para la ocasión.</p>
-    <p><strong>Sugerencias:</strong><br>
-    • Vestidos midi o largos<br>
-    • Trajes con o sin corbata<br>
-    • Colores que evitar: blanco y tonos muy similares al rosa</p>
+    <h2><i class="fas fa-tshirt"></i> Dress Code</h2>
+    <p>El código de vestimenta es <span class="highlight">libre</span> pero aqui te proponemos <span class="ideas-link" onclick="openIdeasPopup()">algunas cuantas ideas</span>.</p>
   </section>
 
   <section id="contacto" class="section">
-    <h2>Contacto</h2>
+    <h2><i class="fas fa-phone"></i> Contacto</h2>
     <p>Para cualquier duda o confirmación de asistencia:</p>
-    <p><strong>Celia:</strong> +34 666 123 456<br>
-    <strong>Alejandro:</strong> +34 666 654 321</p>
-    <p><strong>Email:</strong> celijandro2026@gmail.com</p>
-    <p>Por favor, confirma tu asistencia antes del <span class="highlight">1 de Mayo de 2026</span></p>
+    <p><i class="fas fa-mobile-alt"></i> <strong>Celia:</strong> 655 099 780<br>
+    <i class="fas fa-mobile-alt"></i> <strong>Alejandro:</strong> 697 518 666</p>
+    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> celia.basconp@gmail.com</p>
+    <p><i class="fas fa-clock"></i> Por favor, confirma tu asistencia antes del <span class="highlight">10 de Septiembre de 2025</span></p>
   </section>
 
   <footer>
     <p>Con mucho cariño, Celijandro</p>
   </footer>
 
+  <!-- Popup for dress code ideas -->
+  <div id="ideasPopup" class="popup-overlay" onclick="closeIdeasPopup(event)">
+    <div class="popup-content">
+      <button class="close-button" onclick="closeIdeasPopup()">&times;</button>
+      <div class="carousel-container">
+        <button class="carousel-btn prev-btn" onclick="prevImage()">&lt;</button>
+        <div class="carousel-images">
+          <img src="luisma.png" alt="Ideas de vestimenta 1" class="carousel-image active">
+          <img src="excesivo.png" alt="Ideas de vestimenta 2" class="carousel-image">
+          <img src="pamela.png" alt="Ideas de vestimenta 3" class="carousel-image">
+        </div>
+        <button class="carousel-btn next-btn" onclick="nextImage()">&gt;</button>
+      </div>
+      <div class="carousel-dots">
+        <span class="dot active" onclick="currentImage(1)"></span>
+        <span class="dot" onclick="currentImage(2)"></span>
+        <span class="dot" onclick="currentImage(3)"></span>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const targetDate = new Date('2026-06-20T17:00:00').getTime();
-    const countdownEl = document.getElementById('countdown');
+    const targetDate = new Date('2025-10-04T13:00:00').getTime();
+    
     setInterval(() => {
       const now = new Date().getTime();
       const diff = targetDate - now;
+      
       if (diff < 0) {
-        countdownEl.innerHTML = "¡Ya es el día!";
+        document.querySelector('.countdown-word').textContent = "¡Ya es el día!";
+        document.getElementById('days').textContent = "00";
+        document.getElementById('hours').textContent = "00";
+        document.getElementById('minutes').textContent = "00";
+        document.getElementById('seconds').textContent = "00";
         return;
       }
+      
       const d = Math.floor(diff / (1000 * 60 * 60 * 24));
       const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const m = Math.floor((diff / (1000 * 60)) % 60);
       const s = Math.floor((diff / 1000) % 60);
-      countdownEl.innerHTML = `Faltan ${d} días ${h} h ${m} min ${s} s`;
+      
+      document.getElementById('days').textContent = d.toString().padStart(2, '0');
+      document.getElementById('hours').textContent = h.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = m.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = s.toString().padStart(2, '0');
     }, 1000);
+
+    function toggleMenu() {
+      const navMenu = document.getElementById('nav-menu');
+      navMenu.classList.toggle('show');
+    }
+
+    let currentImageIndex = 1;
+
+    function openIdeasPopup() {
+      const popup = document.getElementById('ideasPopup');
+      popup.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Prevent scrolling when popup is open
+      currentImageIndex = 1; // Reset to first image
+      showImage(currentImageIndex);
+    }
+
+    function closeIdeasPopup(event) {
+      // If event is provided, check if click was on overlay (not on popup content)
+      if (event && event.target !== event.currentTarget) {
+        return;
+      }
+      
+      const popup = document.getElementById('ideasPopup');
+      popup.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+
+    function nextImage() {
+      currentImageIndex = currentImageIndex === 3 ? 1 : currentImageIndex + 1;
+      showImage(currentImageIndex);
+    }
+
+    function prevImage() {
+      currentImageIndex = currentImageIndex === 1 ? 3 : currentImageIndex - 1;
+      showImage(currentImageIndex);
+    }
+
+    function currentImage(n) {
+      currentImageIndex = n;
+      showImage(currentImageIndex);
+    }
+
+    function showImage(n) {
+      const images = document.querySelectorAll('.carousel-image');
+      const dots = document.querySelectorAll('.dot');
+      
+      // Hide all images
+      images.forEach(img => img.classList.remove('active'));
+      
+      // Remove active class from all dots
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      // Show current image and activate corresponding dot
+      images[n - 1].classList.add('active');
+      dots[n - 1].classList.add('active');
+    }
   </script>
 </body>
 </html>
