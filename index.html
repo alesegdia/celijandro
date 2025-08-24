@@ -217,7 +217,7 @@
     }
     .section h2 {
       color: #911e66;
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin-bottom: 1.5rem;
     }
     .section p {
@@ -228,6 +228,15 @@
     .highlight {
       color: #911e66;
       font-weight: bold;
+    }
+    .section-separator {
+      text-align: center;
+      margin: 0;
+    }
+    .section-separator img {
+      max-width: 80px;
+      height: auto;
+      opacity: 0.7;
     }
     .map-button {
       display: inline-block;
@@ -377,6 +386,7 @@
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#laboda">La boda</a></li>
         <li><a href="#comollegar">Como llegar</a></li>
+        <li><a href="#alojamiento">Alojamiento</a></li>
         <li><a href="#dresscode">Dress Code</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
@@ -412,19 +422,27 @@
   </div>
 
   <section id="nosotros" class="section">
-    <h2><i class="fas fa-heart"></i> Nosotros</h2>
-    <p>Somos Celia y Alejandro, y después de <span class="highlight">5 años juntos</span> hemos decidido dar el gran paso. Nos conocimos en la universidad y desde entonces hemos compartido aventuras, risas y sueños.</p>
-    <p>Queremos compartir este momento tan especial con las personas que más queremos. ¡Esperamos verte en nuestra celebración!</p>
-  </section>
-
-  <section id="laboda" class="section">
     <div style="text-align: center; margin: 1.5rem 0;">
       <img src="logo.png" alt="Logo de la boda" style="max-width: 200px; width: 100%; height: auto;">
     </div>
+    <p><span class="highlight">Celijandro</span> te invita a compartir la <span class="highlight">boda más mamarracha del año</span>.</p>
+
+    <p><span class="highlight">Seis años</span> después de prometernos en nuestro primer mes de noviazgo, para sorpresa de todos ha llegado el día.</p>
+  </section>
+
+  <div class="section-separator">
+    <img src="anillos.png" alt="Separador de anillos">
+  </div>
+
+  <section id="laboda" class="section">
     <h2><i class="fas fa-ring"></i> La Boda</h2>
     <p><strong><i class="fas fa-calendar"></i></strong> <span class="highlight">Sábado 4 de Octubre de 2025</span></p>
     <p><strong><i class="fas fa-clock"></i> </strong> 13:00h</p>
   </section>
+
+  <div class="section-separator">
+    <img src="anillos.png" alt="Separador de anillos">
+  </div>
 
   <section id="comollegar" class="section">
     <h2><i class="fas fa-map-marker-alt"></i> Cómo Llegar</h2>
@@ -441,10 +459,37 @@
 
   </section>
 
+  <div class="section-separator">
+    <img src="anillos.png" alt="Separador de anillos">
+  </div>
+
+  <section id="alojamiento" class="section">
+    <h2><i class="fas fa-bed"></i> Alojamiento Miarma</h2>
+
+    <p>El alojamiento para las personas que vienen de fuera será en los <span class="highlight">Apartamentos Leo Deluxe</span> de <span class="highlight">Punta Umbría</span>.</p>
+
+    <div style="margin-top: 1rem;">
+      <a href="https://maps.app.goo.gl/pZqctbGs7c1C9FDS9" target="_blank" class="map-button">
+        <i class="fas fa-map-marker-alt"></i> Ver en Google Maps
+      </a>
+    </div>
+
+    <p>Si alguien quiere hacer algún cambio en el alojamiento, que lo diga ahora o <span class="highlight">calle para siempre</span>.</p>
+
+  </section>
+
+  <div class="section-separator">
+    <img src="anillos.png" alt="Separador de anillos">
+  </div>
+
   <section id="dresscode" class="section">
     <h2><i class="fas fa-tshirt"></i> Dress Code</h2>
     <p>El código de vestimenta es <span class="highlight">libre</span> pero aqui te proponemos <span class="ideas-link" onclick="openIdeasPopup()">algunas cuantas ideas</span>.</p>
   </section>
+
+  <div class="section-separator">
+    <img src="anillos.png" alt="Separador de anillos">
+  </div>
 
   <section id="contacto" class="section">
     <h2><i class="fas fa-phone"></i> Contacto</h2>
@@ -453,10 +498,15 @@
     <i class="fas fa-mobile-alt"></i> <strong>Alejandro:</strong> 697 518 666</p>
     <p><i class="fas fa-envelope"></i> <strong>Email:</strong> celia.basconp@gmail.com</p>
     <p><i class="fas fa-clock"></i> Por favor, confirma tu asistencia antes del <span class="highlight">10 de Septiembre de 2025</span></p>
+  
   </section>
 
+  <div style="width: 100%; height: 587px; overflow: hidden; margin: 0;">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdC9dZpdHw6qGx98MgHGkZCBP23DMgjacLgTZD7rDeATSK0Xw/viewform?embedded=true" width="143%" height="839" frameborder="0" marginheight="0" marginwidth="0" style="transform: scale(0.7); transform-origin: 0 0;">Cargando…</iframe>
+  </div>
+
   <footer>
-    <p>Con mucho cariño, Celijandro</p>
+
   </footer>
 
   <!-- Popup for dress code ideas -->
